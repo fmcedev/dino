@@ -1,12 +1,17 @@
 using System;
+using System.Windows.Forms;
 
-namespace MyNamespace
+public static class RemoteEntry
 {
-    public class MyClass
+    [STAThread]
+    public static void Main(string[] args)
     {
-        public string MyFunction()
-        {
-            return "Hello from downloaded code!";
-        }
+        // this will pop up a WinForms message box when your host app runs
+        MessageBox.Show(
+            "✔️ Remote code successfully executed!",
+            "Remote Code Test",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Information
+        );
     }
 }
