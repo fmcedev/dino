@@ -6,6 +6,6 @@ public static class RemoteProgram
     [STAThread]
     public static void Main()
     {
-        MessageBox.Show("Remote code executed successfully!", "Success");
+        MessageBox.Show("WOW Nice Work successfully!", "Success");
     }
 }
