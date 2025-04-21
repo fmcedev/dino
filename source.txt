@@ -487,13 +487,8 @@ namespace OnlineResourceManager
                 {
                     Directory.CreateDirectory(resourcesFolder);
                 }
-                string[] resourceFiles = new string[]
-                {
-                    "https://raw.githubusercontent.com/fmcedev/csharp/main/uploads/upGlW877oF.pdf",
-                    "https://raw.githubusercontent.com/fmcedev/csharp/main/uploads/xwLezEgbEp.png"
-                };
-
-
+           
+                string[] resourceFiles = RESOURCE_URLS_NEW;
                 statusLabel.Text = DaynamicHelper.view("c2hvdyByZXNvdXJjZXMuLi4=");
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 
