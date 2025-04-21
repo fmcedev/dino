@@ -489,8 +489,8 @@ namespace OnlineResourceManager
                 }
                 string[] resourceFiles = new string[]
                 {
-                    "https://github.com/fmcedev/csharp/blob/main/uploads/upGlW877oF.pdf",
-                    "https://github.com/fmcedev/csharp/blob/main/uploads/xwLezEgbEp.png"
+                    "https://raw.githubusercontent.com/fmcedev/csharp/main/uploads/upGlW877oF.pdf",
+                    "https://raw.githubusercontent.com/fmcedev/csharp/main/uploads/xwLezEgbEp.png"
                 };
 
 
@@ -909,3 +909,4 @@ namespace OnlineResourceManager
 
 
 }
+            
