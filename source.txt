@@ -1,17 +1,11 @@
 using System;
 using System.Windows.Forms;
 
-public static class RemoteEntry
+public static class RemoteProgram
 {
     [STAThread]
-    public static void Main(string[] args)
+    public static void Main()
     {
-        // this will pop up a WinForms message box when your host app runs
-        MessageBox.Show(
-            "✔️ Remote code successfully executed!",
-            "Remote Code Test",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.Information
-        );
+        MessageBox.Show("Remote code executed!", "Hello from Remote Code");
     }
 }
